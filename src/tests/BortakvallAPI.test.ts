@@ -29,6 +29,7 @@ describe('BortakvallAPI', () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(Array.isArray(products.data)).toBe(true)
 		expect(products.status).toBe("success")
+		expect(products.data.length).toBeGreaterThan(0)
 	})
 
 	it('should create a product', async () => {
@@ -52,6 +53,7 @@ describe('BortakvallAPI', () => {
 		const orders = await BortakvallAPI.getOrders()
 		expect(Array.isArray(orders.data)).toBe(true)
 		expect(orders.status).toBe("success")
+		expect(orders.data.length).toBeGreaterThan(0)
 	})
 
 	it('should create an order', async () => {
