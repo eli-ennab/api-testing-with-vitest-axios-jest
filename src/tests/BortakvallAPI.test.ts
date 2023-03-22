@@ -13,33 +13,38 @@ const newProduct: CreateProductData = {
 
 describe('BortakvallAPI', () => {
 
-	it('should return a list', async () => {
+	it('should return a list of products and get status success', async () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(Array.isArray(products.data)).toBe(true)
-	})
-
-	it('should return a status success', async () => {
-		const getProducts = await BortakvallAPI.getProducts()
-		expect(getProducts.status).toBe("success")
+		expect(products.status).toBe("success")
 	})
 
 	it('should create a product', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
-
-		// expect(createdProduct).toMatchObject({
-		// 	id: expect.any(Number),
-		// 	name: newProduct.name,
-		// 	description: newProduct.description,
-		// 	price: newProduct.price,
-		// 	images: newProduct.images,
-		// 	stock_status: newProduct.stock_status,
-		// 	stock_quantity: newProduct.stock_quantity,
-		// })
-
 		expect(createdProduct.status).toBe("success")
 	})
 
+	it('should create a product and then get that product', async () => {
+		const createdProduct = await BortakvallAPI.createProduct(newProduct)
+		const product = await BortakvallAPI.getProduct(createdProduct.data.id)
+		expect(product).toStrictEqual(createdProduct)
+	})
+
+	it.todo('should create a product and then find the product among all products', async () => {
+		const createdProduct = await BortakvallAPI.createProduct(newProduct)
+		const products = await BortakvallAPI.getProducts()
+		expect(products).toContainEqual(createdProduct)
+	})
+
+	it.todo('should return a list of orders', async () => {
+
+	})
+
 	it.todo('should create an order', async () => {
+
+	})
+
+	it.todo('should create a order and then get that order', async () => {
 
 	})
 
