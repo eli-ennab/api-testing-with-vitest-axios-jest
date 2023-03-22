@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import * as BortakvallAPI from '../services/BortakvallAPI'
-import { CreateProductData, Product } from '../types/BortakvallTypes'
+import { CreateOrderData, CreateProductData } from '../types/BortakvallTypes'
 
 const newProduct: CreateProductData = {
 	name: "Colanappar",
@@ -9,6 +9,18 @@ const newProduct: CreateProductData = {
 	images: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
 	stock_status: "instock",
 	stock_quantity: 2
+}
+
+const newOrder: CreateOrderData = {
+	customer_first_name: "Michael",
+	customer_last_name: "Gary Scott",
+	customer_address: "126 Kellum Court",
+	customer_postcode: "12859",
+	customer_city: "Scranton",
+	customer_email: "scotts.totts@dundermifflin.org",
+	customer_phone: "0755-555555",
+	order_total: 1,
+	order_items: [],
 }
 
 describe('BortakvallAPI', () => {
@@ -36,15 +48,24 @@ describe('BortakvallAPI', () => {
 		expect(products).toContainEqual(createdProduct)
 	})
 
-	it.todo('should return a list of orders', async () => {
-
+	it('should return a list of orders', async () => {
+		const orders = await BortakvallAPI.getOrders()
+		expect(Array.isArray(orders.data)).toBe(true)
+		expect(orders.status).toBe("success")
 	})
 
-	it.todo('should create an order', async () => {
-
+	it('should create an order', async () => {
+		const createdOrder = await BortakvallAPI.createOrder(newOrder)
+		expect(createdOrder.status).toBe("success")
 	})
 
-	it.todo('should create a order and then get that order', async () => {
+	it('should create a order and then get that order', async () => {
+		const createdOrder = await BortakvallAPI.createOrder(newOrder)
+		const order = await BortakvallAPI.getOrder(createdOrder.data.id)
+		expect(order).toStrictEqual(createdOrder)
+	})
+
+	it.todo('should create an order and then find the order among all orders', async () => {
 
 	})
 
