@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CreateProductData, Product } from '../types/BortakvallTypes'
+import { CreateOrderData, CreateProductData, Order, Product } from '../types/BortakvallTypes'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -26,18 +26,11 @@ export const getProducts = () => {
 	return get<Product[]>(`/products`)
 }
 
-// export const getProducts = async () => {
-// 	const res = await axios.get<Product[]>(`${BASE_URL}/products`)
-// 	return res.data
-// }
-
 /**
  * Get a single product
  */
 export const getProduct = async (id: number) => {
 	return get<Product>(`/products/${id}`)
-	const res = await axios.get<Product>(`${BASE_URL}/products/${id}`)
-	return res.data
 }
 
 /**
@@ -45,4 +38,25 @@ export const getProduct = async (id: number) => {
  */
 export const createProduct = (product: CreateProductData) => {
 	return post<Product>(`/products`, product)
+}
+
+/**
+ * Get all orders
+ */
+export const getOrders = () => {
+	return get<Product[]>(`/orders`)
+}
+
+/**
+ * Get a single order
+ */
+export const getOrder = async (id: number) => {
+	return get<Order>(`/orders/${id}`)
+}
+
+/**
+ * Create an order
+ */
+export const createOrder = (order: CreateOrderData) => {
+	return post<Order>(`/orders`, order)
 }
