@@ -35,6 +35,7 @@ export const getProducts = () => {
  * Get a single product
  */
 export const getProduct = async (id: number) => {
+	return get<Product>(`/products/${id}`)
 	const res = await axios.get<Product>(`${BASE_URL}/products/${id}`)
 	return res.data
 }
