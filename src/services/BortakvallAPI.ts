@@ -44,7 +44,7 @@ export const createProduct = (product: CreateProductData) => {
  * Get all orders
  */
 export const getOrders = () => {
-	return get<Product[]>(`/orders`)
+	return get<Order[]>(`/orders`)
 }
 
 /**
