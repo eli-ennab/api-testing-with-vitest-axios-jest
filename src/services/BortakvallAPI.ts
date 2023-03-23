@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { OrderData, ProductData, Order, Product, JSend } from '../types/BortakvallTypes'
+import { OrderData, ProductData, Order, Product, JSend, ProductListResponse, ProductResponse } from '../types/BortakvallTypes'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -23,21 +23,24 @@ export const post = async <T>(endpoint: string, data: any) => {
  * Get all products
  */
 export const getProducts = () => {
-	return get<JSend<Product[]>>(`/products`)
+	// return get<JSend<Product[]>>(`/products`)
+	return get<ProductListResponse>(`/products`)
 }
 
 /**
  * Get a single product
  */
 export const getProduct = async (id: number) => {
-	return get<JSend<Product>>(`/products/${id}`)
+	// return get<JSend<Product>>(`/products/${id}`)
+	return get<ProductResponse>(`/products/${id}`)
 }
 
 /**
  * Create a product
  */
 export const createProduct = (product: ProductData) => {
-	return post<JSend<Product>>(`/products`, product)
+	// return post<JSend<Product>>(`/products`, product)
+	return post<Product>(`/products`, product)
 }
 
 /**
