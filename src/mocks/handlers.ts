@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 const mockProducts: Product[] = [
 	{
-		id: 5216,
+		id: 1,
 		name: "Gott & Blandat Giants",
 		description: "<p>En mix av lakrits och gelé med fruktsmak</p>\n<p>Innehållsförteckning: Socker, glukossirap, glukos-fruktossirap, stärkelse, VETEMJÖL, melass, syra (citronsyra), fuktighetsbevarande medel (sorbitoler, glycerol), lakritsextrakt, salt, vegetabiliska oljor (kokos, palm), aromer, färgämnen (E153, E120, E100, E141), ytbehandlingsmedel (bivax), stabiliseringsmedel (E471).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 12,
@@ -14,7 +14,7 @@ const mockProducts: Product[] = [
 		stock_quantity: 5
 	},
 	{
-		id: 6545,
+		id: 2,
 		name: "Banana Bubs",
 		description: "<p>Banan/gräddkola</p>\n<p>Innehållsförteckning: Glukos-fruktossirap, socker, majsstärkelse, vatten, surhetsreglerande medel (äppelsyra, natriumcitrat), potatisprotein, aromämnen, färgämnen: (E150d, E100), kokosolja, ytbehandlingsmedel (karnaubavax).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 8,
@@ -32,12 +32,29 @@ export const handlers = [
 		)
 	}),
 
+	rest.get(BASE_URL + '/products/:productId', (req, res, ctx) => {
+		const productId = Number(req.params.productId)
+
+		const product = mockProducts.find(product => product.id === productId)
+
+		if (!product) {
+		  return res(
+			ctx.status(404),
+		  )
+		}
+
+		return res(
+		  ctx.status(200),
+		  ctx.json(product)
+		)
+	  }),
+
 	rest.post(BASE_URL + '/products', async (req, res, ctx) => {
 		const payload = await req.json<ProductData>()
 
-		const id = Math.max( 0, ...mockProducts.map(todo => todo.id) ) + 1
+		const id = Math.max( 0, ...mockProducts.map(product => product.id) ) + 1
 
-		const newProduct: Product = {
+		const product: Product = {
 			id: id,
 			name: payload.name,
 			description: payload.description,
@@ -47,11 +64,11 @@ export const handlers = [
 			stock_quantity: payload.stock_quantity
 		}
 
-		mockProducts.push(newProduct)
+		mockProducts.push(product)
 
 		return res(
 			ctx.status(201),
-			ctx.json(newProduct)
+			ctx.json(product)
 		)
 	}),
 ]
