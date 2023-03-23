@@ -43,7 +43,6 @@ describe('BortakvallAPI', () => {
 	/**
 	 * Product tests
 	 */
-	/*
 	it('should return a list of products', async () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(Array.isArray(products)).toBe(true)
@@ -73,7 +72,6 @@ describe('BortakvallAPI', () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(products).toContainEqual(createdProduct)
 	})
-	*/
 
 	/**
 	 * Order tests
