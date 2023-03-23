@@ -60,12 +60,13 @@ describe('BortakvallAPI', () => {
 		})
 	})
 
-	/*
-	it.todo('should create a product and then get that product', async () => {
+	it('should create a product and then get that product', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
-		const product = await BortakvallAPI.getProduct(createdProduct.data.id)
+		const product = await BortakvallAPI.getProduct(createdProduct.id)
 		expect(product).toStrictEqual(createdProduct)
 	})
+
+	/*
 
 	it.todo('should create a product and then find the product among all products', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
