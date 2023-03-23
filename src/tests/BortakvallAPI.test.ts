@@ -41,18 +41,26 @@ const newOrder: OrderData = {
 
 describe('BortakvallAPI', () => {
 
-	it.todo('should return a list of products and get status success', async () => {
+	it('should return a list of products', async () => {
 		const products = await BortakvallAPI.getProducts()
-		expect(Array.isArray(products.data)).toBe(true)
-		expect(products.status).toBe("success")
-		expect(products.data.length).toBeGreaterThan(0)
+		expect(Array.isArray(products)).toBe(true)
 	})
 
-	it.todo('should create a product', async () => {
+	it('should create a product', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
-		expect(createdProduct.status).toBe("success")
+		// expect(createdProduct.status).toBe("success")
+		expect(createdProduct).toMatchObject({
+			id: expect.any(Number),
+			name: newProduct.name,
+			description: newProduct.description,
+			price: newProduct.price,
+			images: newProduct.images,
+			stock_status: newProduct.stock_status,
+			stock_quantity: newProduct.stock_quantity
+		})
 	})
 
+	/*
 	it.todo('should create a product and then get that product', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
 		const product = await BortakvallAPI.getProduct(createdProduct.data.id)
@@ -86,5 +94,5 @@ describe('BortakvallAPI', () => {
 	it.todo('should create an order and then find the order among all orders', async () => {
 
 	})
-
+	*/
 })
