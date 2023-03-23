@@ -48,7 +48,6 @@ describe('BortakvallAPI', () => {
 
 	it('should create a product', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
-		// expect(createdProduct.status).toBe("success")
 		expect(createdProduct).toMatchObject({
 			id: expect.any(Number),
 			name: newProduct.name,
@@ -66,9 +65,7 @@ describe('BortakvallAPI', () => {
 		expect(product).toStrictEqual(createdProduct)
 	})
 
-	/*
-
-	it.todo('should create a product and then find the product among all products', async () => {
+	it('should create a product and then find the product among all products', async () => {
 		const createdProduct = await BortakvallAPI.createProduct(newProduct)
 		const products = await BortakvallAPI.getProducts()
 		expect(products).toContainEqual(createdProduct)
@@ -95,5 +92,5 @@ describe('BortakvallAPI', () => {
 	it.todo('should create an order and then find the order among all orders', async () => {
 
 	})
-	*/
+
 })
