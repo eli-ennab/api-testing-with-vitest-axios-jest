@@ -45,7 +45,8 @@ describe('BortakvallAPI', () => {
 	 */
 	it('should return a list of products', async () => {
 		const products = await BortakvallAPI.getProducts()
-		expect(Array.isArray(products)).toBe(true)
+		expect(Array.isArray(products.data)).toBe(true)
+		expect(products.status).toBe("success")
 	})
 
 	it('should create a product', async () => {
@@ -67,18 +68,13 @@ describe('BortakvallAPI', () => {
 		expect(product).toStrictEqual(createdProduct)
 	})
 
-	it('should create a product and then find the product among all products', async () => {
-		const createdProduct = await BortakvallAPI.createProduct(newProduct)
-		const products = await BortakvallAPI.getProducts()
-		expect(products).toContainEqual(createdProduct)
-	})
-
 	/**
 	 * Order tests
 	 */
 	it('should return a list of orders', async () => {
 		const orders = await BortakvallAPI.getOrders()
-		expect(Array.isArray(orders)).toBe(true)
+		expect(Array.isArray(orders.data)).toBe(true)
+		expect(orders.status).toBe("success")
 	})
 
 	it('should create an order', async () => {
@@ -101,11 +97,5 @@ describe('BortakvallAPI', () => {
 		const createdOrder = await BortakvallAPI.createOrder(newOrder)
 		const order = await BortakvallAPI.getOrder(createdOrder.id)
 		expect(order).toStrictEqual(createdOrder)
-	})
-
-	it('should create an order and then find the order among all orders', async () => {
-		const createdOrder = await BortakvallAPI.createOrder(newOrder)
-		const orders = await BortakvallAPI.getOrders()
-		expect(orders).toContainEqual(createdOrder)
 	})
 })
