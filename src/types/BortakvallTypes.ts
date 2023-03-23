@@ -16,6 +16,18 @@ export type Product = ProductData & {
 
 export type ProductList = Product[]
 
+export type ProductResponse = {
+	status: string,
+	data: Product,
+	message?: string
+}
+
+export type ProductListResponse = {
+	status: string,
+	data: ProductList,
+	message?: string
+}
+
 /**
  * Order
  */
@@ -36,6 +48,18 @@ export type Order = OrderData & {
 }
 
 export type OrderList = Order[]
+
+export type OrderResponse = {
+	status: string,
+	data: Order,
+	message?: string
+}
+
+export type OrderListResponse = {
+	status: string,
+	data: OrderList,
+	message?: string
+}
 
 /**
  * Generic JSend Type
