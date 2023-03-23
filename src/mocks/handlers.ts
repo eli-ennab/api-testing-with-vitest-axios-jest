@@ -58,7 +58,10 @@ export const handlers = [
 	rest.get(BASE_URL + '/products', (_req, res, ctx) => {
 		return res(
 			ctx.status(200),
-			ctx.json(mockProducts),
+			ctx.json({
+				status: "success",
+				data: mockProducts
+			  })
 		)
 	}),
 
@@ -108,7 +111,10 @@ export const handlers = [
 	rest.get(BASE_URL + '/orders', (_req, res, ctx) => {
 		return res(
 			ctx.status(200),
-			ctx.json(mockOrders),
+			ctx.json({
+				status: "success",
+				data: mockOrders
+			  })
 		)
 	}),
 
