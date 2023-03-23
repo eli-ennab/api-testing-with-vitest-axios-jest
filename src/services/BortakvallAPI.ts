@@ -30,7 +30,7 @@ export const getProducts = () => {
 /**
  * Get a single product
  */
-export const getProduct = async (id: number) => {
+export const getProduct = (id: number) => {
 	// return get<JSend<Product>>(`/products/${id}`)
 	return get<ProductResponse>(`/products/${id}`)
 }
