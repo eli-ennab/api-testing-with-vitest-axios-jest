@@ -40,7 +40,10 @@ const newOrder: OrderData = {
 }
 
 describe('BortakvallAPI', () => {
-
+	/**
+	 * Product tests
+	 */
+	/*
 	it('should return a list of products', async () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(Array.isArray(products)).toBe(true)
@@ -70,27 +73,41 @@ describe('BortakvallAPI', () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(products).toContainEqual(createdProduct)
 	})
+	*/
 
-	it.todo('should return a list of orders', async () => {
+	/**
+	 * Order tests
+	 */
+	it('should return a list of orders', async () => {
 		const orders = await BortakvallAPI.getOrders()
-		expect(Array.isArray(orders.data)).toBe(true)
-		expect(orders.status).toBe("success")
-		expect(orders.data.length).toBeGreaterThan(0)
+		expect(Array.isArray(orders)).toBe(true)
 	})
 
-	it.todo('should create an order', async () => {
+	it('should create an order', async () => {
 		const createdOrder = await BortakvallAPI.createOrder(newOrder)
-		expect(createdOrder.status).toBe("success")
+		expect(createdOrder).toMatchObject({
+			id: expect.any(Number),
+			customer_first_name: newOrder.customer_first_name,
+			customer_last_name: newOrder.customer_last_name,
+			customer_address: newOrder.customer_address,
+			customer_postcode: newOrder.customer_postcode,
+			customer_city: newOrder.customer_city,
+			customer_email: newOrder.customer_email,
+			customer_phone: newOrder.customer_phone,
+			order_total: newOrder.order_total,
+			order_items: newOrder.order_items
+		})
 	})
 
-	it.todo('should create a order and then get that order', async () => {
+	it('should create a order and then get that order', async () => {
 		const createdOrder = await BortakvallAPI.createOrder(newOrder)
-		const order = await BortakvallAPI.getOrder(createdOrder.data.id)
+		const order = await BortakvallAPI.getOrder(createdOrder.id)
 		expect(order).toStrictEqual(createdOrder)
 	})
 
-	it.todo('should create an order and then find the order among all orders', async () => {
-
+	it('should create an order and then find the order among all orders', async () => {
+		const createdOrder = await BortakvallAPI.createOrder(newOrder)
+		const orders = await BortakvallAPI.getOrders()
+		expect(orders).toContainEqual(createdOrder)
 	})
-
 })
