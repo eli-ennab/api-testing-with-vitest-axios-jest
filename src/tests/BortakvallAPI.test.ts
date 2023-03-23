@@ -1,6 +1,22 @@
-import { describe, it, expect } from 'vitest'
+import { afterAll, afterEach, beforeAll, describe, it, expect } from 'vitest'
+import { server } from '../mocks/server'
 import * as BortakvallAPI from '../services/BortakvallAPI'
 import { CreateOrderData, CreateProductData } from '../types/BortakvallTypes'
+
+// Boot API mocking
+beforeAll(() => {
+	server.listen()
+})
+
+// Reset handlers
+afterEach(() => {
+	server.resetHandlers()
+})
+
+// Clean up after ourselves
+afterAll(() => {
+	server.close()
+})
 
 const newProduct: CreateProductData = {
 	name: "Colanappar",
