@@ -32,7 +32,7 @@ export const getProducts = () => {
  */
 export const getProduct = (id: number) => {
 	// return get<JSend<Product>>(`/products/${id}`)
-	return get<ProductResponse>(`/products/${id}`)
+	return get<JSend<ProductResponse>>(`/products/${id}`)
 }
 
 /**
@@ -40,7 +40,7 @@ export const getProduct = (id: number) => {
  */
 export const createProduct = (product: ProductData) => {
 	// return post<JSend<Product>>(`/products`, product)
-	return post<Product>(`/products`, product)
+	return post<JSend<Product>>(`/products`, product)
 }
 
 /**
