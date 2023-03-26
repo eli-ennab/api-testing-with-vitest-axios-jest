@@ -78,7 +78,10 @@ export const handlers = [
 
 		return res(
 		  ctx.status(200),
-		  ctx.json(product)
+		  ctx.json({
+			status: "success",
+			data: product
+		  })
 		)
 	  }),
 
@@ -101,8 +104,11 @@ export const handlers = [
 
 		return res(
 			ctx.status(201),
-			ctx.json(product)
-		)
+			ctx.json({
+				status: "success",
+				data: product
+			  })
+		  )
 	}),
 
 	/**
