@@ -136,9 +136,12 @@ export const handlers = [
 		}
 
 		return res(
-		  ctx.status(200),
-		  ctx.json(order)
-		)
+			ctx.status(200),
+			ctx.json({
+			  status: "success",
+			  data: order
+			})
+		  )
 	  }),
 
 	rest.post(BASE_URL + '/orders', async (req, res, ctx) => {
@@ -163,7 +166,10 @@ export const handlers = [
 
 		return res(
 			ctx.status(201),
-			ctx.json(order)
-		)
+			ctx.json({
+				status: "success",
+				data: order
+			  })
+		  )
 	}),
 ]

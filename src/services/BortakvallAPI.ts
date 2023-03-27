@@ -54,12 +54,12 @@ export const getOrders = () => {
  * Get a single order
  */
 export const getOrder = async (id: number) => {
-	return get<OrderResponse>(`/orders/${id}`)
+	return get<JSend<OrderResponse>>(`/orders/${id}`)
 }
 
 /**
  * Create an order
  */
 export const createOrder = (order: OrderData) => {
-	return post<Order>(`/orders`, order)
+	return post<JSend<Order>>(`/orders`, order)
 }
