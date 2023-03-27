@@ -10,8 +10,8 @@ const mockProducts: Product[] = [
 		description: "<p>En mix av lakrits och gelé med fruktsmak</p>\n<p>Innehållsförteckning: Socker, glukossirap, glukos-fruktossirap, stärkelse, VETEMJÖL, melass, syra (citronsyra), fuktighetsbevarande medel (sorbitoler, glycerol), lakritsextrakt, salt, vegetabiliska oljor (kokos, palm), aromer, färgämnen (E153, E120, E100, E141), ytbehandlingsmedel (bivax), stabiliseringsmedel (E471).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 12,
 		images: {
-			large: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
-			thumbnail: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+			large: "https://http.cat/201",
+			thumbnail: "https://http.cat/201",
 		},
 		stock_status: "instock",
 		stock_quantity: 5
@@ -22,8 +22,8 @@ const mockProducts: Product[] = [
 		description: "<p>Banan/gräddkola</p>\n<p>Innehållsförteckning: Glukos-fruktossirap, socker, majsstärkelse, vatten, surhetsreglerande medel (äppelsyra, natriumcitrat), potatisprotein, aromämnen, färgämnen: (E150d, E100), kokosolja, ytbehandlingsmedel (karnaubavax).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 8,
 		images: {
-			large: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
-			thumbnail: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+			large: "https://http.cat/201",
+			thumbnail: "https://http.cat/201",
 		},
 		stock_status: "instock",
 		stock_quantity: 8
@@ -41,7 +41,16 @@ const mockOrders: Order[] = [
 		customer_email: "scotts.totts@dundermifflin.org",
 		customer_phone: "0755-555555",
 		order_total: 1,
-		order_items: []
+        order_items: [
+            {
+                id: 31,
+                order_id: 27,
+                product_id: 8,
+                qty: 1,
+                item_price: 12,
+                item_total: 12
+            }
+        ]
 	},
 	{
 		id: 2,
@@ -53,7 +62,16 @@ const mockOrders: Order[] = [
 		customer_email: "bearsbeatsbeets@schrutefarms.org",
 		customer_phone: "0722-222222",
 		order_total: 1,
-		order_items: []
+        order_items: [
+            {
+                id: 32,
+                order_id: 28,
+                product_id: 10,
+                qty: 1,
+                item_price: 12,
+                item_total: 12
+            }
+        ]
 	}
 ]
 
