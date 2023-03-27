@@ -39,7 +39,7 @@ const newOrder: OrderData = {
 	order_items: [],
 }
 
-describe('BortakvallAPI', () => {
+describe('Product tests', () => {
 	/**
 	 * Product tests
 	 */
@@ -72,8 +72,12 @@ describe('BortakvallAPI', () => {
 		expect(getProduct).toStrictEqual(createdProduct)
 		expect(getProduct.status).toBe("success")
 		expect(getProduct.status).not.toBe("error" || "fail")
+		expect(createdProduct.status).toBe("success")
+		expect(createdProduct.status).not.toBe("error" || "fail")
 	})
+})
 
+describe('Order tests', () => {
 	/**
 	 * Order tests
 	 */
@@ -102,7 +106,6 @@ describe('BortakvallAPI', () => {
 
 		expect(createdOrder.status).toBe("success")
 		expect(createdOrder.status).not.toBe("error" || "fail")
-
 	})
 
 	it('should create a order and then get that order', async () => {
@@ -112,7 +115,7 @@ describe('BortakvallAPI', () => {
 
 		expect(getOrder.status).toBe("success")
 		expect(getOrder.status).not.toBe("error" || "fail")
-		// expect(createdOrder.status).toBe("success")
-		// expect(createdOrder.status).not.toBe("error" || "fail")
+		expect(createdOrder.status).toBe("success")
+		expect(createdOrder.status).not.toBe("error" || "fail")
 	})
 })
