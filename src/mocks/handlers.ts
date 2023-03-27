@@ -9,7 +9,10 @@ const mockProducts: Product[] = [
 		name: "Gott & Blandat Giants",
 		description: "<p>En mix av lakrits och gelé med fruktsmak</p>\n<p>Innehållsförteckning: Socker, glukossirap, glukos-fruktossirap, stärkelse, VETEMJÖL, melass, syra (citronsyra), fuktighetsbevarande medel (sorbitoler, glycerol), lakritsextrakt, salt, vegetabiliska oljor (kokos, palm), aromer, färgämnen (E153, E120, E100, E141), ytbehandlingsmedel (bivax), stabiliseringsmedel (E471).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 12,
-		images: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+		images: {
+			large: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+			thumbnail: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+		},
 		stock_status: "instock",
 		stock_quantity: 5
 	},
@@ -18,7 +21,10 @@ const mockProducts: Product[] = [
 		name: "Banana Bubs",
 		description: "<p>Banan/gräddkola</p>\n<p>Innehållsförteckning: Glukos-fruktossirap, socker, majsstärkelse, vatten, surhetsreglerande medel (äppelsyra, natriumcitrat), potatisprotein, aromämnen, färgämnen: (E150d, E100), kokosolja, ytbehandlingsmedel (karnaubavax).</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 		price: 8,
-		images: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+		images: {
+			large: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+			thumbnail: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+		},
 		stock_status: "instock",
 		stock_quantity: 8
 	},
@@ -73,6 +79,10 @@ export const handlers = [
 		if (!product) {
 		  return res(
 			ctx.status(404),
+			ctx.json({
+				status: "fail",
+				message: "Not found"
+			  })
 		  )
 		}
 
@@ -132,6 +142,10 @@ export const handlers = [
 		if (!order) {
 		  return res(
 			ctx.status(404),
+			ctx.json({
+				status: "fail",
+				message: "Not found"
+			  })
 		  )
 		}
 
