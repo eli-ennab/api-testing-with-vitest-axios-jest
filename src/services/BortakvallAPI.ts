@@ -23,7 +23,6 @@ export const post = async <T>(endpoint: string, data: any) => {
  * Get all products
  */
 export const getProducts = () => {
-	// return get<JSend<Product[]>>(`/products`)
 	return get<ProductListResponse>(`/products`)
 }
 
@@ -31,7 +30,6 @@ export const getProducts = () => {
  * Get a single product
  */
 export const getProduct = (id: number) => {
-	// return get<JSend<Product>>(`/products/${id}`)
 	return get<JSend<ProductResponse>>(`/products/${id}`)
 }
 
@@ -39,7 +37,6 @@ export const getProduct = (id: number) => {
  * Create a product
  */
 export const createProduct = (product: ProductData) => {
-	// return post<JSend<Product>>(`/products`, product)
 	return post<JSend<Product>>(`/products`, product)
 }
 
