@@ -1,5 +1,13 @@
 /**
- * Product
+ * Generic JSend Type
+ */
+export type JSend<T> = {
+	status: "success" | "fail" | "error",
+	data: T,
+}
+
+/**
+ * Product types
  */
 export type ProductData = {
 	name: string,
@@ -34,7 +42,7 @@ export type ProductImages = {
 }
 
 /**
- * Order
+ * Order types
  */
 export type OrderData = {
 	customer_first_name: string,
@@ -45,8 +53,7 @@ export type OrderData = {
 	customer_email: string,
 	customer_phone: string,
 	order_total: number,
-	order_items: [],
-	// order_items: OrderItems,
+	order_items: OrderItems[],
 }
 
 export type Order = OrderData & {
@@ -67,19 +74,11 @@ export type OrderListResponse = {
 	message?: string
 }
 
-// export type OrderItems = {
-// 	id: number,
-// 	order_id: number,
-// 	product_id: number,
-// 	qty: number,
-// 	item_price: number,
-// 	item_total: number,
-// }
-
-/**
- * Generic JSend Type
- */
-export type JSend<T> = {
-	status: "success" | "fail" | "error",
-	data: T,
+export type OrderItems = {
+	id: number,
+	order_id: number,
+	product_id: number,
+	qty: number,
+	item_price: number,
+	item_total: number,
 }
