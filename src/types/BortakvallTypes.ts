@@ -5,7 +5,7 @@ export type ProductData = {
 	name: string,
 	description: string,
 	price: number,
-	images: string,
+	images: ProductImages,
 	stock_status: string,
 	stock_quantity: number,
 }
@@ -28,6 +28,11 @@ export type ProductListResponse = {
 	message?: string
 }
 
+export type ProductImages = {
+	large: string,
+	thumbnail: string,
+}
+
 /**
  * Order
  */
@@ -41,6 +46,7 @@ export type OrderData = {
 	customer_phone: string,
 	order_total: number,
 	order_items: [],
+	// order_items: OrderItems,
 }
 
 export type Order = OrderData & {
@@ -60,6 +66,15 @@ export type OrderListResponse = {
 	data: OrderList,
 	message?: string
 }
+
+// export type OrderItems = {
+// 	id: number,
+// 	order_id: number,
+// 	product_id: number,
+// 	qty: number,
+// 	item_price: number,
+// 	item_total: number,
+// }
 
 /**
  * Generic JSend Type
