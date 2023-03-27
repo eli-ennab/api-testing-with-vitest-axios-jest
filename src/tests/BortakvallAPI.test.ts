@@ -22,7 +22,10 @@ const newProduct: ProductData = {
 	name: "Colanappar",
 	description: "<p>Vingummi med colasmak</p>\n<p>Innehållsförteckning: Glukossirap, socker, gelatin, druvsocker, syra: citronsyra, karamelliserat socker, arom, palmolja, ytbehandlingsmedel: bivax vitt och gult, karnaubavax.</p>\n<p>Kan innehålla VETE.</p>\n<p><em>Alla priser är per skopa.</em></p>\n",
 	price: 7,
-	images: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+	images: {
+		large: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+		thumbnail: "https://www.boredpanda.com/blog/wp-content/uploads/2022/09/relatable-funny-memes-22-63284d45ebe28__700.jpg",
+	},
 	stock_status: "instock",
 	stock_quantity: 2
 }
@@ -40,9 +43,6 @@ const newOrder: OrderData = {
 }
 
 describe('Product tests', () => {
-	/**
-	 * Product tests
-	 */
 	it('should return a list of products', async () => {
 		const products = await BortakvallAPI.getProducts()
 		expect(Array.isArray(products.data)).toBe(true)
@@ -78,9 +78,6 @@ describe('Product tests', () => {
 })
 
 describe('Order tests', () => {
-	/**
-	 * Order tests
-	 */
 	it('should return a list of orders', async () => {
 		const orders = await BortakvallAPI.getOrders()
 		expect(Array.isArray(orders.data)).toBe(true)
